@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run test:html && npm run test:js",
     "test:html": "glob-run nu-html-checker *.html",
-    "test:js": "glob-run jshint *.js",
+    "test:js": "jshint *.js",
     "init-project": "npm run init:dirs && npm run init:files && npm run init:gitignore && npm run init:npm-install",
     "init:dirs": "mkdir -p sass css vendor images js",
     "init:files": "touch README.md index.html sass/style.scss js/script.js",
@@ -19,7 +19,7 @@
     "build:autoprefixer": "autoprefixer-cli css/style.css",
     "watch": "parallelshell \"npm run watch:sassprefixer\" \"npm run watch:browsersync\" ",
     "watch:sassprefixer": "parallelshell \"node-sass --output-style expanded --source-map true -o css sass\" \"onchange -d 100 css/style.css -- autoprefixer-cli -o css/style.prefixed.css css/style.css\" ",
-    "watch:browsersync": "node_modules/.bin/browser-sync start --server --files \"css/*.css\" \"*.html\" "
+    "watch:browsersync": "browser-sync start --server --files \"css/*.css\" \"*.html\" "
   },
   "repository": {
     "type": "git",
