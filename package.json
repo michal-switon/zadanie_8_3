@@ -1,15 +1,15 @@
 {
-  "name": "init-pack",
+  "name": "nauka-gita-2",
   "version": "1.0.0",
   "description": "https://michal-switon.github.io/nauka-gita-2/",
   "main": "index.js",
   "scripts": {
     "test": "npm run test:html && npm run test:js",
     "test:html": "glob-run nu-html-checker *.html",
-    "test:js": "jshint js",
+    "test:js": "jshint js/scripts.js",
     "init-project": "npm run init:dirs && npm run init:files && npm run init:gitignore && npm run init:npm-install",
     "init:dirs": "mkdir -p sass css vendor images js",
-    "init:files": "touch README.md index.html sass/style.scss js/script.js",
+    "init:files": "touch README.md index.html sass/style.scss js/scripts.js",
     "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
     "init:npm-install": "npm install",
     "build": "npm run build:clean && npm run build:sass && npm run build:autoprefixer && npm run test",
@@ -19,7 +19,7 @@
     "build:autoprefixer": "autoprefixer-cli css/style.css",
     "watch": "parallelshell \"npm run watch:sassprefixer\" \"npm run watch:browsersync\" ",
     "watch:sassprefixer": "parallelshell \"node-sass --output-style expanded --source-map true -o css sass\" \"onchange -d 100 css/style.css -- autoprefixer-cli -o css/style.prefixed.css css/style.css\" ",
-    "watch:browsersync": "browser-sync start --server --files \"css/*.css\" \"*.html\" "
+    "watch:browsersync": "node_modules/.bin/browser-sync start --server --files \"css/*.css\" \"*.html\" "
   },
   "repository": {
     "type": "git",
@@ -42,7 +42,6 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
-    "glob-run": "^0.1.6",
-    "jshint": "^2.9.5"
+    "glob-run": "^0.1.6"
   }
 }
